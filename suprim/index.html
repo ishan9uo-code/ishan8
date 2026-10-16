@@ -1,0 +1,1293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ishan Raut | Web Developer, Video & Photo Editor</title>
+  <meta name="description" content="Official portfolio of Ishan Raut - Class 9 student at Paradise English Boarding School, creative Web Developer, Video & Photo Editor, and Concept Developer." />
+  
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Ambient Glow Background Canvas -->
+  <canvas id="particles-canvas"></canvas>
+
+  <!-- Glowing Cursor Follower (Desktop only) -->
+  <div class="cursor-glow" id="cursorGlow"></div>
+
+  <!-- Navigation Bar -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="logo">
+        <span class="logo-text">ISHAN<span class="highlight">.</span></span>
+        <span class="badge-mini">Class 9</span>
+      </a>
+
+      <div class="nav-links" id="navLinks">
+        <a href="#hero" class="nav-link active">Home</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#skills" class="nav-link">Skills</a>
+        <a href="#portfolio" class="nav-link">Work</a>
+        <a href="#editing-lab" class="nav-link">Editing Lab</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="https://www.instagram.com/mr.leofc/" target="_blank" rel="noopener noreferrer" class="btn-nav-insta">
+          <i class="fa-brands fa-instagram"></i>
+          <span>@mr.leofc</span>
+        </a>
+      </div>
+
+      <div class="nav-actions">
+        <a href="#contact" class="btn-hire-me">Hire Me</a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header class="hero-section" id="hero">
+    <div class="container hero-container">
+      <div class="hero-content">
+        <div class="hero-badge animate-fade-down">
+          <span class="pulse-dot"></span>
+          <span>Available for Projects & Collaborations</span>
+        </div>
+        
+        <h1 class="hero-title animate-fade-up">
+          Hi, I'm <span class="gradient-text">Ishan Raut</span>
+        </h1>
+
+        <div class="typewriter-container animate-fade-up delay-1">
+          <span class="prefix">I am a</span>
+          <span class="typed-text" id="typedText"></span>
+          <span class="cursor">&nbsp;</span>
+        </div>
+
+        <p class="hero-description animate-fade-up delay-2">
+          Class 9 student at <strong>Paradise English Boarding School</strong> with a burning passion for crafting futuristic websites, cinematic video edits, striking photo manipulations, and creative concepts.
+        </p>
+
+        <div class="hero-stats animate-fade-up delay-3">
+          <div class="stat-card">
+            <span class="stat-num" data-target="25">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Videos Edited</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" data-target="15">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Web Designs</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-num" data-target="50">0</span><span class="stat-plus">+</span>
+            <span class="stat-label">Photo Arts</span>
+          </div>
+        </div>
+
+        <div class="hero-cta animate-fade-up delay-4">
+          <a href="https://www.instagram.com/mr.leofc/" target="_blank" rel="noopener noreferrer" class="btn-primary insta-direct-btn">
+            <i class="fa-brands fa-instagram"></i>
+            <span>Visit Instagram (@mr.leofc)</span>
+          </a>
+          <a href="#portfolio" class="btn-secondary">
+            <span>Explore Works</span>
+            <i class="fa-solid fa-arrow-right"></i>
+          </a>
+        </div>
+
+        <div class="hero-social-links animate-fade-up delay-5">
+          <span class="social-label">Connect:</span>
+          <a href="https://www.instagram.com/mr.leofc/" target="_blank" rel="noopener noreferrer" class="social-icon" title="Instagram">
+            <i class="fa-brands fa-instagram"></i>
+          </a>
+          <a href="mailto:rsuprim18@gmail.com" class="social-icon" title="Email Ishan">
+            <i class="fa-solid fa-envelope"></i>
+          </a>
+          <a href="tel:9807341822" class="social-icon" title="Call Ishan">
+            <i class="fa-solid fa-phone"></i>
+          </a>
+          <a href="https://wa.me/9779807341822" target="_blank" rel="noopener noreferrer" class="social-icon" title="WhatsApp">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+
+      <div class="hero-image-wrapper animate-fade-left">
+        <div class="image-frame-glow"></div>
+        <div class="hero-image-card">
+          <!-- Profile image with fallback handlers and custom upload trigger -->
+          <img 
+            id="heroProfileImg"
+            src="profile.jpg" 
+            alt="Ishan Raut - Web Developer and Video Photo Editor" 
+            class="hero-img"
+            onerror="loadProfileFallback(this);"
+          />
+          <div class="image-overlay"></div>
+
+          <!-- Quick Change Photo Button -->
+          <label for="photoUploadInput" class="btn-change-photo" title="Change or Update Photo">
+            <i class="fa-solid fa-camera"></i>
+            <span>Update Photo</span>
+          </label>
+          <input type="file" id="photoUploadInput" accept="image/*" style="display: none;" onchange="handlePhotoUpload(event)" />
+          
+          <!-- Floating interactive badges -->
+          <div class="floating-badge badge-school">
+            <div class="badge-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="badge-text">
+              <span class="badge-title">Class 9 Student</span>
+              <span class="badge-sub">Paradise English Boarding School</span>
+            </div>
+          </div>
+
+          <div class="floating-badge badge-dev">
+            <div class="badge-icon"><i class="fa-solid fa-code"></i></div>
+            <div class="badge-text">
+              <span class="badge-title">Web Developer</span>
+              <span class="badge-sub">Modern & Responsive</span>
+            </div>
+          </div>
+
+          <div class="floating-badge badge-editor">
+            <div class="badge-icon"><i class="fa-solid fa-film"></i></div>
+            <div class="badge-text">
+              <span class="badge-title">Video & Photo Editor</span>
+              <span class="badge-sub">Cinematic & Aesthetics</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating WhatsApp Action Button for Mobile & PC -->
+    <a href="https://wa.me/9779807341822?text=Hello%20Ishan,%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="floating-whatsapp-btn" title="Chat with Ishan on WhatsApp">
+      <i class="fa-brands fa-whatsapp"></i>
+      <span class="whatsapp-tooltip">Chat with Ishan</span>
+    </a>
+  </header>
+
+  <!-- About Section -->
+  <section class="section about-section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">WHO I AM</span>
+        <h2 class="section-title">Driven by Creativity, Powered by Code</h2>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="about-grid">
+        <div class="about-card intro-card">
+          <div class="card-glow"></div>
+          <div class="card-icon-wrap">
+            <i class="fa-solid fa-user-astronaut"></i>
+          </div>
+          <h3>Ishan Raut</h3>
+          <p class="about-meta">
+            <span><i class="fa-solid fa-school"></i> Paradise English Boarding School</span>
+            <span><i class="fa-solid fa-book-open"></i> Grade 9</span>
+            <span><i class="fa-solid fa-location-dot"></i> Nepal</span>
+          </p>
+          <p class="about-bio">
+            I am a young, energetic multi-skilled creator who loves bridging the gap between imagination and technology. While focusing on my studies in Grade 9, I dedicate my free hours to mastering frontend web development, cutting-edge video editing (reels, color grading, velocity cuts), and digital visual effects.
+          </p>
+          <div class="contact-quick-strip">
+            <a href="mailto:rsuprim18@gmail.com" class="quick-link">
+              <i class="fa-solid fa-envelope"></i> rsuprim18@gmail.com
+            </a>
+            <a href="tel:9807341822" class="quick-link">
+              <i class="fa-solid fa-phone"></i> +977 9807341822
+            </a>
+          </div>
+        </div>
+
+        <div class="about-pillars">
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-laptop-code"></i></div>
+            <div class="pillar-info">
+              <h4>Website Development</h4>
+              <p>Designing and building clean, fast, mobile-first websites with sleek animations and interactive layouts.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-scissors"></i></div>
+            <div class="pillar-info">
+              <h4>Video Editing & Motion</h4>
+              <p>Crafting high-retention shorts, reels, cinematic color grading, smooth sound design, and viral pacing.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+            <div class="pillar-info">
+              <h4>Photo Retouching & Art</h4>
+              <p>Transforming ordinary shots into professional posters, thumbnail graphics, and moody aesthetic visuals.</p>
+            </div>
+          </div>
+
+          <div class="pillar-card">
+            <div class="pillar-icon"><i class="fa-solid fa-lightbulb"></i></div>
+            <div class="pillar-info">
+              <h4>Concept Developer</h4>
+              <p>Turning abstract ideas into structured video storyboards, creative themes, and digital campaigns.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="section skills-section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">MY ARSENAL</span>
+        <h2 class="section-title">Skills & Technologies</h2>
+        <p class="section-subtitle">A balanced fusion of technical coding and artistic visual craft</p>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="skills-wrapper">
+        <!-- Web Development Skills -->
+        <div class="skill-category-card">
+          <div class="skill-card-top">
+            <i class="fa-solid fa-code"></i>
+            <h3>Web Development</h3>
+          </div>
+          <p class="cat-desc">Building responsive, accessible, and animated experiences.</p>
+          
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>HTML5 / Semantic Markup</span>
+                <span>95%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 95%"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>CSS3 / Flexbox & CSS Grid</span>
+                <span>90%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 90%"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>JavaScript & Interactivity</span>
+                <span>80%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 80%"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>Mobile Responsive Design</span>
+                <span>92%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 92%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Video Editing Skills -->
+        <div class="skill-category-card">
+          <div class="skill-card-top">
+            <i class="fa-solid fa-video"></i>
+            <h3>Video Editing</h3>
+          </div>
+          <p class="cat-desc">Pacing, transitions, visual effects, and storytelling.</p>
+          
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>Reels & TikTok Editing</span>
+                <span>95%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 95%"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>Beat Sync & Sound Design</span>
+                <span>88%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 88%"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>Color Grading & Mood</span>
+                <span>85%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 85%"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>Cinematic Velocity & Motion</span>
+                <span>87%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 87%"></div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Photo & Concept Skills -->
+        <div class="skill-category-card">
+          <div class="skill-card-top">
+            <i class="fa-solid fa-palette"></i>
+            <h3>Photo & Concept Design</h3>
+          </div>
+          <p class="cat-desc">Visual aesthetics, lighting, color manipulation, and ideation.</p>
+          
+          <div class="skill-bars">
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>Photo Retouching & FX</span>
+                <span>90%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 90%"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>YouTube Thumbnails & Banners</span>
+                <span>92%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 92%"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>Creative Concept Ideation</span>
+                <span>89%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 89%"></div></div>
+            </div>
+
+            <div class="skill-bar-item">
+              <div class="skill-info">
+                <span>UI/UX Wireframing</span>
+                <span>82%</span>
+              </div>
+              <div class="progress-bg"><div class="progress-fill" style="width: 82%"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Portfolio Section -->
+  <section class="section portfolio-section" id="portfolio">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">MY CREATIONS</span>
+        <h2 class="section-title">Featured Works & Masterpieces</h2>
+        <p class="section-subtitle">Real, high-definition video edits, photo manipulations, and web development creations with auto-sliding showcases</p>
+        <div class="title-underline"></div>
+      </div>
+
+      <!-- ==============================================
+           1. SIDEWAYS AUTO-SLIDING VIDEO EDITS SHOWCASE
+           ============================================== -->
+      <div class="showcase-block video-showcase-block">
+        <div class="showcase-header">
+          <div class="showcase-title-wrap">
+            <span class="pill-label pill-video"><i class="fa-solid fa-clapperboard"></i> 5 FEATURED VIDEO EDITS</span>
+            <h3>Cinematic Velocity & Video Edits (Sideways Auto-Slider)</h3>
+            <p>5 human-crafted velocity edits, beat-sync cuts, and cinematic LUT color grading. Displayed sideways side-by-side and auto-slides horizontally!</p>
+          </div>
+          <div class="slider-controls">
+            <button class="slider-arrow-btn" id="videoPrevBtn" title="Previous Video"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider-play-toggle" id="videoAutoplayToggle" title="Pause / Resume Auto-Slide">
+              <i class="fa-solid fa-pause"></i> <span class="auto-txt">Auto-Slide</span>
+            </button>
+            <button class="slider-arrow-btn" id="videoNextBtn" title="Next Video"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Video Slider Progress Bar -->
+        <div class="slider-progress-track">
+          <div class="slider-progress-fill" id="videoProgressFill"></div>
+        </div>
+
+        <!-- The Sideways Multi-Card Video Viewport -->
+        <div class="sideways-carousel-viewport" id="videoCarouselViewport">
+          <div class="sideways-carousel-track" id="videoCarouselTrack">
+            
+            <!-- Video Card 1: Street Skater Velocity -->
+            <div class="sideways-card video-card-item">
+              <div class="card-inner">
+                <div class="card-media-wrapper" onclick="openVideoModal('skater')">
+                  <video 
+                    class="card-video-media" 
+                    autoplay loop muted playsinline 
+                    poster="https://images.unsplash.com/photo-1520045892732-304bc3ac5d8e?auto=format&fit=crop&w=800&q=80"
+                  >
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-young-woman-skater-performing-a-trick-in-the-street-42676-large.mp4" type="video/mp4">
+                  </video>
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-pink"><i class="fa-solid fa-bolt"></i> Velocity Edit</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-play"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">CapCut Pro • 60 FPS</span>
+                  <h4>Urban Skater Velocity & Speed Ramp</h4>
+                  <p>Hand-tuned speed ramp curves with optical flow motion blur and bass-impact screen shakes.</p>
+                  <div class="card-pills">
+                    <span>Speed Ramps</span>
+                    <span>Sound FX</span>
+                    <span>60 FPS</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openVideoModal('skater')">
+                    <span>Watch Full Preview</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 2: Cyberpunk Rain Dancer -->
+            <div class="sideways-card video-card-item">
+              <div class="card-inner">
+                <div class="card-media-wrapper" onclick="openVideoModal('dancer')">
+                  <video 
+                    class="card-video-media" 
+                    autoplay loop muted playsinline 
+                    poster="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&w=800&q=80"
+                  >
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-man-dancing-under-the-rain-with-neon-lights-42867-large.mp4" type="video/mp4">
+                  </video>
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-cyan"><i class="fa-solid fa-music"></i> Beat-Sync</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-play"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">After Effects • Sound FX</span>
+                  <h4>Cyber Rain Dancer Beat-Sync Velocity</h4>
+                  <p>Foley water splash acoustics synced with neon cyan/magenta reflections and glitch flashes.</p>
+                  <div class="card-pills">
+                    <span>Beat Matching</span>
+                    <span>Water Foley</span>
+                    <span>Neon Grade</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openVideoModal('dancer')">
+                    <span>Watch Full Preview</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 3: Rooftop Sunset Athlete -->
+            <div class="sideways-card video-card-item">
+              <div class="card-inner">
+                <div class="card-media-wrapper" onclick="openVideoModal('athlete')">
+                  <video 
+                    class="card-video-media" 
+                    autoplay loop muted playsinline 
+                    poster="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800&q=80"
+                  >
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-woman-running-on-a-rooftop-at-sunset-42858-large.mp4" type="video/mp4">
+                  </video>
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-purple"><i class="fa-solid fa-dumbbell"></i> Cinematic 4K</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-play"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">Premiere Pro • Cinematic</span>
+                  <h4>Rooftop Athlete Sunset Sprint & Flare</h4>
+                  <p>Dynamic zoom punches, golden hour warm flare highlights, and optical flow slow-motion curves.</p>
+                  <div class="card-pills">
+                    <span>Golden Hour</span>
+                    <span>Zoom Punches</span>
+                    <span>LUT Grade</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openVideoModal('athlete')">
+                    <span>Watch Full Preview</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 4: Studio Fashion Model -->
+            <div class="sideways-card video-card-item">
+              <div class="card-inner">
+                <div class="card-media-wrapper" onclick="openVideoModal('fashion')">
+                  <video 
+                    class="card-video-media" 
+                    autoplay loop muted playsinline 
+                    poster="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=80"
+                  >
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-fashion-model-posing-in-neon-lights-42860-large.mp4" type="video/mp4">
+                  </video>
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-orange"><i class="fa-solid fa-vest-patches"></i> Fashion Reel</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-play"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">Instagram Reel • Trap Beat</span>
+                  <h4>Studio Fashion Model Neon Glow Edit</h4>
+                  <p>RGB chromatic split transitions, rim glow masks, and moody high-fashion aesthetic rhythm.</p>
+                  <div class="card-pills">
+                    <span>RGB Split</span>
+                    <span>Glow Masks</span>
+                    <span>Pacing</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openVideoModal('fashion')">
+                    <span>Watch Full Preview</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Video Card 5: Gaming & Action AMV Montage -->
+            <div class="sideways-card video-card-item">
+              <div class="card-inner">
+                <div class="card-media-wrapper" onclick="openVideoModal('gaming')">
+                  <video 
+                    class="card-video-media" 
+                    autoplay loop muted playsinline 
+                    poster="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80"
+                  >
+                    <source src="https://assets.mixkit.co/videos/preview/mixkit-close-up-of-hands-holding-a-smartphone-playing-a-game-41808-large.mp4" type="video/mp4">
+                  </video>
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-pink"><i class="fa-solid fa-gamepad"></i> AMV / Gaming</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-play"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">High Tempo • Bass Drop</span>
+                  <h4>Competitive Gaming Velocity Montage</h4>
+                  <p>Sniper reload Foley timing, heavy bass drop syncs, 3D text tracking, and viral Shorts pacing.</p>
+                  <div class="card-pills">
+                    <span>Bass Drop</span>
+                    <span>3D Tracking</span>
+                    <span>High Tempo</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openVideoModal('gaming')">
+                    <span>Watch Full Preview</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Video Dots Navigation (5 Dots) -->
+        <div class="slider-dots" id="videoSliderDots">
+          <button class="slider-dot active" data-index="0"></button>
+          <button class="slider-dot" data-index="1"></button>
+          <button class="slider-dot" data-index="2"></button>
+          <button class="slider-dot" data-index="3"></button>
+          <button class="slider-dot" data-index="4"></button>
+        </div>
+      </div>
+
+      <!-- ==============================================
+           2. SIDEWAYS AUTO-SLIDING PHOTO EDITS SHOWCASE
+           ============================================== -->
+      <div class="showcase-block photo-showcase-block">
+        <div class="showcase-header">
+          <div class="showcase-title-wrap">
+            <span class="pill-label pill-photo"><i class="fa-solid fa-wand-magic-sparkles"></i> 5 PHOTO MANIPULATIONS</span>
+            <h3>Poster Designs & Photo Art (Sideways Auto-Slider)</h3>
+            <p>Complex composite artwork, fiery poster typography, and digital manipulations. Displayed sideways side-by-side and auto-slides horizontally!</p>
+          </div>
+          <div class="slider-controls">
+            <button class="slider-arrow-btn" id="photoPrevBtn" title="Previous Photo"><i class="fa-solid fa-chevron-left"></i></button>
+            <button class="slider-play-toggle" id="photoAutoplayToggle" title="Pause / Resume Auto-Slide">
+              <i class="fa-solid fa-pause"></i> <span class="auto-txt">Auto-Slide</span>
+            </button>
+            <button class="slider-arrow-btn" id="photoNextBtn" title="Next Photo"><i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+
+        <!-- Photo Slider Progress Bar -->
+        <div class="slider-progress-track">
+          <div class="slider-progress-fill" id="photoProgressFill"></div>
+        </div>
+
+        <!-- The Sideways Multi-Card Photo Viewport -->
+        <div class="sideways-carousel-viewport" id="photoCarouselViewport">
+          <div class="sideways-carousel-track" id="photoCarouselTrack">
+            
+            <!-- Photo Card 1: AK Graphics Gate Manipulation (User's Artwork 1) -->
+            <div class="sideways-card photo-card-item">
+              <div class="card-inner poster-inner">
+                <div class="card-media-wrapper poster-media-wrapper" onclick="openImageModal('ak-graphics')">
+                  <img 
+                    src="file:///C:/Users/ISWORRAUT/.gemini/antigravity/brain/d60eb69d-12ce-4cc9-b6f7-212d9fab784c/.user_uploaded/media_1792144205824_19fe6353.jpg" 
+                    alt="Dark Apocalyptic Gate Manipulation by Ishan Raut" 
+                    class="card-img-media"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=80';"
+                  />
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-orange"><i class="fa-solid fa-fire"></i> Composite Art</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">Photoshop • Composite Manipulation</span>
+                  <h4>Dark Apocalyptic Gate & Chair Art</h4>
+                  <p>Fiery apocalyptic atmosphere, gothic gargoyles, skull gatekeeper composite, and 3D metallic typography.</p>
+                  <div class="card-pills">
+                    <span>Fire Atmosphere</span>
+                    <span>3D Metallic Text</span>
+                    <span>Gargoyle Blending</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openImageModal('ak-graphics')">
+                    <span>Inspect High-Res Art</span>
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo Card 2: Happy Birthday Brother Fiery Stencil Poster (User's Artwork 2) -->
+            <div class="sideways-card photo-card-item">
+              <div class="card-inner poster-inner">
+                <div class="card-media-wrapper poster-media-wrapper" onclick="openImageModal('birthday-stencil')">
+                  <img 
+                    src="file:///C:/Users/ISWORRAUT/.gemini/antigravity/brain/d60eb69d-12ce-4cc9-b6f7-212d9fab784c/.user_uploaded/media_1792144240049_fd11d1d0.jpg" 
+                    alt="Fiery Stencil Birthday Poster by Ishan Raut" 
+                    class="card-img-media"
+                    onerror="this.onerror=null; this.src='https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=80';"
+                  />
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-pink"><i class="fa-solid fa-wand-magic-sparkles"></i> Poster Design</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">Graphic Poster • Fire & Glow</span>
+                  <h4>Fiery Stencil Birthday Poster Graphic</h4>
+                  <p>Distressed grunge typography with flying fire sparks, dynamic lighting flares, and dramatic cinematic red haze.</p>
+                  <div class="card-pills">
+                    <span>Distressed Text</span>
+                    <span>Lens Flares</span>
+                    <span>Sparks & Embers</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openImageModal('birthday-stencil')">
+                    <span>Inspect High-Res Art</span>
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo Card 3: Cyberpunk Neon Samurai Manipulation -->
+            <div class="sideways-card photo-card-item">
+              <div class="card-inner poster-inner">
+                <div class="card-media-wrapper poster-media-wrapper" onclick="openImageModal('cyber-samurai')">
+                  <img 
+                    src="https://images.unsplash.com/photo-1508700115892-45ecd05ae2ad?auto=format&fit=crop&w=800&q=85" 
+                    alt="Cyber Neon Character Manipulation by Ishan Raut" 
+                    class="card-img-media"
+                  />
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-cyan"><i class="fa-solid fa-city"></i> Cyberpunk FX</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">Character Composite • Neon FX</span>
+                  <h4>Cyberpunk Neon Street Character Art</h4>
+                  <p>Dual-tone magenta and cyan rim light synthesis, rain reflection contrast curves, and atmospheric neon fog.</p>
+                  <div class="card-pills">
+                    <span>Cyan-Magenta</span>
+                    <span>Rain Reflection</span>
+                    <span>Rim Glow FX</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openImageModal('cyber-samurai')">
+                    <span>Inspect High-Res Art</span>
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo Card 4: High-CTR YouTube Cover Banner -->
+            <div class="sideways-card photo-card-item">
+              <div class="card-inner poster-inner">
+                <div class="card-media-wrapper poster-media-wrapper" onclick="openImageModal('thumb-viral')">
+                  <img 
+                    src="https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=800&q=85" 
+                    alt="Viral YouTube Thumbnail Cover by Ishan Raut" 
+                    class="card-img-media"
+                  />
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-pink"><i class="fa-solid fa-fire"></i> Viral Graphic</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">YouTube Cover • 12%+ CTR</span>
+                  <h4>High-CTR 3D Extruded Gaming Banner</h4>
+                  <p>Extreme contrast pop, 3D extruded metallic typography, directional lighting flares, and intense edge glow.</p>
+                  <div class="card-pills">
+                    <span>3D Typography</span>
+                    <span>High Contrast</span>
+                    <span>Clickability</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openImageModal('thumb-viral')">
+                    <span>Inspect High-Res Art</span>
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Photo Card 5: Surreal Fantasy Floating Island Manipulation -->
+            <div class="sideways-card photo-card-item">
+              <div class="card-inner poster-inner">
+                <div class="card-media-wrapper poster-media-wrapper" onclick="openImageModal('fantasy-island')">
+                  <img 
+                    src="https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=800&q=85" 
+                    alt="Surreal Floating Island Fantasy by Ishan Raut" 
+                    class="card-img-media"
+                  />
+                  <div class="media-overlay-gradient"></div>
+                  <span class="badge-tag bg-purple"><i class="fa-solid fa-mountain"></i> Surreal Matte</span>
+                  <div class="media-hover-trigger">
+                    <div class="pulse-play-mini"><i class="fa-solid fa-magnifying-glass-plus"></i></div>
+                  </div>
+                </div>
+                <div class="card-content-wrapper">
+                  <span class="card-sub-category">Matte Painting • Photoshop</span>
+                  <h4>Surreal Floating Island & Sky Composite</h4>
+                  <p>Multi-layered mountain rock blending, mystical waterfall gravity effects, cloud depth, and fantasy atmospheric lighting.</p>
+                  <div class="card-pills">
+                    <span>Matte Painting</span>
+                    <span>Cloud Depth</span>
+                    <span>Fantasy Glow</span>
+                  </div>
+                  <button class="btn-card-action" onclick="openImageModal('fantasy-island')">
+                    <span>Inspect High-Res Art</span>
+                    <i class="fa-solid fa-eye"></i>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Photo Dots Navigation (5 Dots) -->
+        <div class="slider-dots" id="photoSliderDots">
+          <button class="slider-dot active" data-index="0"></button>
+          <button class="slider-dot" data-index="1"></button>
+          <button class="slider-dot" data-index="2"></button>
+          <button class="slider-dot" data-index="3"></button>
+          <button class="slider-dot" data-index="4"></button>
+        </div>
+      </div>
+
+      <!-- Quick Filter Tabs for Web, Concepts & More -->
+      <div class="filter-header-sub">
+        <h3>All Other Works & Digital Concepts</h3>
+        <p>Filter websites, concept storyboards, and interactive prototypes</p>
+      </div>
+
+      <div class="filter-tabs">
+        <button class="filter-btn active" data-filter="all">All Projects</button>
+        <button class="filter-btn" data-filter="web">Websites</button>
+        <button class="filter-btn" data-filter="concept">Concepts</button>
+      </div>
+
+      <!-- Compact Projects Grid for Websites & Concepts -->
+      <div class="projects-grid" id="projectsGrid">
+        
+        <!-- Web Item 1 -->
+        <div class="project-card" data-category="web">
+          <div class="project-media">
+            <div class="web-preview-box">
+              <div class="mock-browser-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="mock-url">https://school-portal.edu.np</span>
+              </div>
+              <div class="mock-canvas-thumb school-web-thumb">
+                <div class="web-logo-sym"><i class="fa-solid fa-graduation-cap"></i></div>
+                <div class="thumb-title">PARADISE PORTAL CONCEPT</div>
+                <div class="thumb-sub">Smart Student Dashboard UI</div>
+              </div>
+            </div>
+            <span class="tag-badge web-badge"><i class="fa-solid fa-code"></i> Web Dev</span>
+          </div>
+          <div class="project-details">
+            <span class="project-date">Frontend Development</span>
+            <h4>School Portal & Resource Hub</h4>
+            <p>Clean educational dashboard with student timetable, homework tracker, downloadable syllabus, and modern responsive UI.</p>
+            <div class="project-footer">
+              <span class="tech-tag">HTML5 / CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <a href="#contact" class="btn-action-view">Get Demo <i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Web Item 2 -->
+        <div class="project-card" data-category="web">
+          <div class="project-media">
+            <div class="web-preview-box">
+              <div class="mock-browser-bar">
+                <span class="dot red"></span>
+                <span class="dot yellow"></span>
+                <span class="dot green"></span>
+                <span class="mock-url">https://ishan-portfolio.dev</span>
+              </div>
+              <div class="mock-canvas-thumb school-web-thumb" style="background: linear-gradient(135deg, #1b0a2a, #0b1120);">
+                <div class="web-logo-sym" style="color: #ff2a85;"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="thumb-title">CYBER PORTFOLIO SUITE</div>
+                <div class="thumb-sub">Ultra Fast Animated Architecture</div>
+              </div>
+            </div>
+            <span class="tag-badge web-badge"><i class="fa-solid fa-code"></i> Web Dev</span>
+          </div>
+          <div class="project-details">
+            <span class="project-date">Frontend Development</span>
+            <h4>Personal Animated Portfolio Engine</h4>
+            <p>Glassmorphic interface with canvas constellation particles, 60fps auto-sliding showcases, touch carousels, and responsive mobile architecture.</p>
+            <div class="project-footer">
+              <span class="tech-tag">Performance</span>
+              <span class="tech-tag">Responsive</span>
+              <a href="#hero" class="btn-action-view">Active UI <i class="fa-solid fa-check"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Concept Item 1 -->
+        <div class="project-card" data-category="concept">
+          <div class="project-media">
+            <div class="mock-canvas-thumb concept-thumb">
+              <div class="concept-wireframe">
+                <div class="wire-line w-80"></div>
+                <div class="wire-boxes">
+                  <div class="wb"></div><div class="wb"></div><div class="wb"></div>
+                </div>
+              </div>
+              <div class="thumb-title">VIRAL REEL STORYBOARD</div>
+              <div class="thumb-sub">Hook, Retain, Payoff Framework</div>
+            </div>
+            <span class="tag-badge concept-badge"><i class="fa-solid fa-lightbulb"></i> Concept</span>
+          </div>
+          <div class="project-details">
+            <span class="project-date">Creative Ideation</span>
+            <h4>3-Second Retention Script Framework</h4>
+            <p>Proven structure for Instagram creators: 0-3s visual hook, 3-15s emotional buildup, 15-30s punchline delivery with dynamic sound tags.</p>
+            <div class="project-footer">
+              <span class="tech-tag">Storytelling</span>
+              <span class="tech-tag">Growth</span>
+              <a href="https://www.instagram.com/mr.leofc/" target="_blank" rel="noopener noreferrer" class="btn-action-view">Discuss <i class="fa-brands fa-instagram"></i></a>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Editing Lab (Before & After Slider with Auto-Slide Mode) -->
+  <section class="section editing-lab-section" id="editing-lab">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">EDITING LAB</span>
+        <h2 class="section-title">Interactive Before & After Demonstration</h2>
+        <p class="section-subtitle">Real photographic color grade & retouching. It auto-slides back and forth smoothly on its own, or you can drag the divider anytime!</p>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="slider-interactive-container">
+        <!-- Auto Scan Control Bar -->
+        <div class="slider-control-strip">
+          <button class="btn-scan-toggle active" id="autoScanToggle" onclick="toggleBeforeAfterAutoScan()">
+            <i class="fa-solid fa-play"></i>
+            <span id="autoScanText">Auto-Slide: ON</span>
+          </button>
+          <span class="scan-status-hint"><i class="fa-solid fa-sliders"></i> Drag divider or let it auto-slide</span>
+        </div>
+
+        <div class="comparison-slider" id="comparisonSlider">
+          <!-- BEFORE image layer (Raw / Flat LOG Profile) -->
+          <div class="slide-layer before-layer">
+            <div class="raw-visual">
+              <img 
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=80" 
+                alt="Raw Ungraded Flat Capture" 
+                class="comparison-img raw-mode"
+              />
+              <div class="raw-overlay-tag">
+                <i class="fa-solid fa-circle-dot"></i> RAW UNGRADED (FLAT LOG)
+              </div>
+              <div class="scenery-text raw-text-badge">NO COLOR GRADING // FLAT DYNAMIC RANGE</div>
+            </div>
+          </div>
+
+          <!-- AFTER image layer (Ishan's Graded & Retouched Edit) -->
+          <div class="slide-layer after-layer" id="afterLayer">
+            <div class="graded-visual">
+              <img 
+                src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=95" 
+                alt="Ishan Graded and Retouched" 
+                class="comparison-img graded-mode"
+              />
+              <div class="graded-overlay-tag">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> ISHAN'S COLOR GRADE & RETOUCH
+              </div>
+              <div class="scenery-text glow-text after-text-badge">CINEMATIC TEAL & GOLD // VIBRANT CURVE</div>
+            </div>
+          </div>
+
+          <!-- Slider Divider Handle -->
+          <div class="slider-divider" id="sliderDivider">
+            <div class="divider-button">
+              <i class="fa-solid fa-arrows-left-right"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-tips">
+          <span><i class="fa-solid fa-hand-pointer"></i> Drag or touch the divider to pause auto-scan, or watch it sweep automatically!</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Callout Banner: Instagram Feature -->
+  <section class="section insta-banner-section">
+    <div class="container">
+      <div class="insta-glass-card">
+        <div class="insta-icon-big">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div class="insta-info">
+          <span class="tag-live">OFFICIAL INSTAGRAM</span>
+          <h3>Follow @mr.leofc on Instagram</h3>
+          <p>Get daily updates on my latest video edits, creative visual experiments, coding snippets, and behind-the-scenes stories.</p>
+        </div>
+        <div class="insta-button-wrap">
+          <a href="https://www.instagram.com/mr.leofc/" target="_blank" rel="noopener noreferrer" class="btn-insta-giant">
+            <i class="fa-brands fa-instagram"></i>
+            <span>Open @mr.leofc Directly</span>
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="section contact-section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">LET'S CONNECT</span>
+        <h2 class="section-title">Get In Touch With Ishan</h2>
+        <p class="section-subtitle">Need a website developed, videos edited for social media, or photo retouching? Reach out directly!</p>
+        <div class="title-underline"></div>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Contact Details Column -->
+        <div class="contact-cards-col">
+          <!-- Card: Instagram -->
+          <a href="https://www.instagram.com/mr.leofc/" target="_blank" rel="noopener noreferrer" class="contact-card insta-card">
+            <div class="c-icon"><i class="fa-brands fa-instagram"></i></div>
+            <div class="c-info">
+              <span class="c-title">Instagram</span>
+              <span class="c-value">@mr.leofc</span>
+              <span class="c-hint">Click to open Instagram profile</span>
+            </div>
+            <div class="c-arrow"><i class="fa-solid fa-arrow-up-right-from-square"></i></div>
+          </a>
+
+          <!-- Card: Email -->
+          <a href="mailto:rsuprim18@gmail.com" class="contact-card email-card">
+            <div class="c-icon"><i class="fa-solid fa-envelope"></i></div>
+            <div class="c-info">
+              <span class="c-title">Direct Email</span>
+              <span class="c-value">rsuprim18@gmail.com</span>
+              <span class="c-hint">Send a direct message anytime</span>
+            </div>
+            <div class="c-arrow"><i class="fa-solid fa-paper-plane"></i></div>
+          </a>
+
+          <!-- Card: Phone -->
+          <a href="tel:9807341822" class="contact-card phone-card">
+            <div class="c-icon"><i class="fa-solid fa-phone"></i></div>
+            <div class="c-info">
+              <span class="c-title">Phone Call</span>
+              <span class="c-value">+977 9807341822</span>
+              <span class="c-hint">Available for inquiries & calls</span>
+            </div>
+            <div class="c-arrow"><i class="fa-solid fa-phone-volume"></i></div>
+          </a>
+
+          <!-- Card: WhatsApp Direct -->
+          <a href="https://wa.me/9779807341822?text=Hi%20Ishan,%20I%20saw%20your%20portfolio!" target="_blank" rel="noopener noreferrer" class="contact-card whatsapp-card">
+            <div class="c-icon"><i class="fa-brands fa-whatsapp"></i></div>
+            <div class="c-info">
+              <span class="c-title">WhatsApp Chat</span>
+              <span class="c-value">9807341822</span>
+              <span class="c-hint">Fastest response on WhatsApp</span>
+            </div>
+            <div class="c-arrow"><i class="fa-solid fa-comment-dots"></i></div>
+          </a>
+
+          <!-- Card: School -->
+          <div class="contact-card school-card">
+            <div class="c-icon"><i class="fa-solid fa-graduation-cap"></i></div>
+            <div class="c-info">
+              <span class="c-title">Education</span>
+              <span class="c-value">Paradise English Boarding School</span>
+              <span class="c-hint">Class 9 Student & Tech Innovator</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Interactive Contact Form -->
+        <div class="contact-form-col">
+          <div class="form-container-card">
+            <h3>Send Me a Direct Message</h3>
+            <p>Whether you have a video project, website idea, or just want to say hi, drop a note below!</p>
+            
+            <form id="contactForm" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <div class="input-wrap">
+                  <i class="fa-solid fa-user"></i>
+                  <input type="text" id="name" name="name" placeholder="e.g. John Doe" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="email">Your Email / Phone</label>
+                <div class="input-wrap">
+                  <i class="fa-solid fa-envelope"></i>
+                  <input type="text" id="email" name="email" placeholder="e.g. yourname@gmail.com" required />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="service">Interested Service</label>
+                <div class="input-wrap select-wrap">
+                  <i class="fa-solid fa-briefcase"></i>
+                  <select id="service" name="service">
+                    <option value="Website Development">Website Development</option>
+                    <option value="Video Editing / Reels">Video Editing / Reels</option>
+                    <option value="Photo Retouching & Thumbnails">Photo Retouching & Thumbnails</option>
+                    <option value="Concept Development">Creative Concept Development</option>
+                    <option value="Other Project">Other / Collaboration</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="message">Project Details</label>
+                <div class="input-wrap textarea-wrap">
+                  <i class="fa-solid fa-message"></i>
+                  <textarea id="message" name="message" rows="4" placeholder="Tell me about what you want to build or edit..." required></textarea>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-submit" id="submitBtn">
+                <span>Send Message Now</span>
+                <i class="fa-solid fa-paper-plane"></i>
+              </button>
+
+              <div class="form-status" id="formStatus"></div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Interactive Video Preview Modal -->
+  <div class="modal-overlay" id="videoModal" onclick="closeModalOnOverlay(event, 'videoModal')">
+    <div class="modal-window">
+      <button class="modal-close-btn" onclick="closeVideoModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <h3 id="modalVideoTitle">Project Video Preview</h3>
+        <span class="modal-badge">Edited by Ishan Raut</span>
+      </div>
+      <div class="modal-body">
+        <div class="simulated-player" id="simulatedPlayer">
+          <!-- Canvas dynamic visualizer or video -->
+          <canvas id="videoCanvas" width="640" height="360"></canvas>
+          <div class="player-controls">
+            <button class="player-btn" id="playPauseBtn" onclick="toggleSimulatedPlay()"><i class="fa-solid fa-pause"></i></button>
+            <div class="player-timeline">
+              <div class="timeline-fill" id="timelineFill"></div>
+            </div>
+            <span class="time-display" id="timeDisplay">00:08 / 00:15</span>
+          </div>
+        </div>
+        <div class="modal-description" id="modalVideoDesc">
+          Custom beat-synced motion cuts, velocity speed mapping, and multi-layered color enhancement.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive Image Lightbox Modal -->
+  <div class="modal-overlay" id="imageModal" onclick="closeModalOnOverlay(event, 'imageModal')">
+    <div class="modal-window image-modal-window">
+      <button class="modal-close-btn" onclick="closeImageModal()"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <h3 id="modalImageTitle">Photo Artwork Inspector</h3>
+        <span class="modal-badge">Edited by Ishan Raut</span>
+      </div>
+      <div class="modal-body modal-image-body">
+        <div class="lightbox-img-canvas" id="lightboxImgCanvas">
+          <!-- Dynamic high-res render container -->
+        </div>
+        <div class="modal-description" id="modalImageDesc">
+          Detailed color adjustment, dynamic lighting layers, and digital retouching.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <div class="logo-text">ISHAN<span class="highlight">.</span>RAUT</div>
+          <p>Student at Paradise English Boarding School (Class 9) • Web Developer • Video & Photo Editor • Concept Developer.</p>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#hero">Home</a></li>
+            <li><a href="#about">About Ishan</a></li>
+            <li><a href="#skills">Skills & Tools</a></li>
+            <li><a href="#portfolio">Projects</a></li>
+            <li><a href="#editing-lab">Editing Lab</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links-group">
+          <h4>Direct Contacts</h4>
+          <ul>
+            <li><a href="https://www.instagram.com/mr.leofc/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> @mr.leofc</a></li>
+            <li><a href="mailto:rsuprim18@gmail.com"><i class="fa-solid fa-envelope"></i> rsuprim18@gmail.com</a></li>
+            <li><a href="tel:9807341822"><i class="fa-solid fa-phone"></i> +977 9807341822</a></li>
+            <li><a href="https://wa.me/9779807341822" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-whatsapp"></i> WhatsApp</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>&copy; <span id="currentYear">2026</span> Ishan Raut. Designed & Engineered with passion.</p>
+        <div class="footer-back-to-top">
+          <a href="#hero" class="btn-top" title="Back to top">
+            <i class="fa-solid fa-arrow-up"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating AI Assistant Button (Bottom Left) -->
+  <div class="floating-ai-wrapper">
+    <button class="floating-ai-btn" id="aiChatToggle" title="Chat with Ishan's AI Assistant" onclick="toggleAIChat()">
+      <div class="ai-sparkle-icon"><i class="fa-solid fa-robot"></i></div>
+      <span class="ai-btn-text">Ask Ishan AI</span>
+      <span class="ai-online-pulse"></span>
+    </button>
+  </div>
+
+  <!-- AI Chat Window -->
+  <div class="ai-chat-window" id="aiChatWindow">
+    <div class="ai-chat-header">
+      <div class="ai-header-profile">
+        <div class="ai-avatar-ring">
+          <i class="fa-solid fa-robot"></i>
+          <span class="ai-live-indicator"></span>
+        </div>
+        <div class="ai-header-titles">
+          <h4>Ishan AI Assistant</h4>
+          <span class="ai-header-status">Online • Knows everything about Ishan & more</span>
+        </div>
+      </div>
+      <div class="ai-header-actions">
+        <button class="btn-chat-action" onclick="clearAIChat()" title="Clear Chat History"><i class="fa-solid fa-rotate-right"></i></button>
+        <button class="btn-chat-action" onclick="toggleAIChat()" title="Close Chat"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+    </div>
+
+    <!-- Quick Question Suggestion Chips -->
+    <div class="ai-quick-chips" id="aiQuickChips">
+      <button class="chip-btn" onclick="sendQuickPrompt('Who is Ishan Raut?')">👋 Who is Ishan?</button>
+      <button class="chip-btn" onclick="sendQuickPrompt('What video editing services do you offer?')">🎬 Video Editing</button>
+      <button class="chip-btn" onclick="sendQuickPrompt('What photo retouching do you do?')">📸 Photo Retouching</button>
+      <button class="chip-btn" onclick="sendQuickPrompt('How can I contact or hire Ishan?')">💬 Hire / Contact</button>
+      <button class="chip-btn" onclick="sendQuickPrompt('What school does Ishan attend?')">🏫 School & Class</button>
+      <button class="chip-btn" onclick="sendQuickPrompt('Give me advice on website development')">💻 Web Dev Tips</button>
+    </div>
+
+    <!-- Scrollable Chat Messages -->
+    <div class="ai-chat-messages" id="aiChatMessages">
+      <div class="chat-msg ai-msg">
+        <div class="msg-avatar"><i class="fa-solid fa-robot"></i></div>
+        <div class="msg-bubble">
+          <p>Namaste! 🙏 I am <strong>Ishan's AI Virtual Assistant</strong>. I know <strong>everything</strong> about Ishan Raut (his studies at Paradise English Boarding School, video editing, photo retouching, web development, and direct contacts)!</p>
+          <p>You can also ask me <strong>ANYTHING else</strong> you want — coding, editing tips, general knowledge, math, or creative ideas! What's on your mind today?</p>
+          <span class="msg-time">Just now</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Typing Indicator -->
+    <div class="ai-typing-indicator" id="aiTypingIndicator" style="display: none;">
+      <span class="typing-dot"></span>
+      <span class="typing-dot"></span>
+      <span class="typing-dot"></span>
+    </div>
+
+    <!-- Input Box -->
+    <form class="ai-chat-input-bar" id="aiChatForm" onsubmit="handleAIChatSubmit(event)">
+      <input type="text" id="aiChatInput" placeholder="Ask anything about Ishan or any topic..." autocomplete="off" required />
+      <button type="submit" class="ai-send-btn" id="aiSendBtn" title="Send Question">
+        <i class="fa-solid fa-paper-plane"></i>
+      </button>
+    </form>
+  </div>
+
+  <!-- Custom Scripts -->
+  <script src="script.js"></script>
+</body>
+</html>
